@@ -8,13 +8,13 @@ let cells = [];
 
 ( function init() {
 
-	ctx.scale( 3, 3 );
+	ctx.scale( 6, 6 );
 	ctx.fillStyle = 'white';
-	ctx.fillRect( 0, 0, 200, 200 );
+	ctx.fillRect( 0, 0, 100, 100 );
 
-	for ( let i = 0; i < 200; i++ ) {
+	for ( let i = 0; i < 100; i++ ) {
 		cells[i] = [];
-		for ( let j = 0; j < 200; j++ ) {
+		for ( let j = 0; j < 100; j++ ) {
 			cells[i][j] = Math.round( Math.random()*0.6 );
 			if ( cells[i][j] ) {
 				ctx.fillStyle = 'black';
@@ -30,18 +30,18 @@ function run() {
 
 	const cells_copy = JSON.parse( JSON.stringify( cells ) );
 
-	for ( let i = 0; i < 200; i++ ) {
-		for ( let j = 0; j < 200; j++ ) {
+	for ( let i = 0; i < 100; i++ ) {
+		for ( let j = 0; j < 100; j++ ) {
 
 			let neighbors = 0;
-			neighbors += cells_copy[i==199?0:i+1][j];
-			neighbors += cells_copy[i==0?199:i-1][j];
-			neighbors += cells_copy[i][j==199?0:j+1];
-			neighbors += cells_copy[i][j==0?199:j-1];
-			neighbors += cells_copy[i==199?0:i+1][j==199?0:j+1];
-			neighbors += cells_copy[i==0?199:i-1][j==0?199:j-1];
-			neighbors += cells_copy[i==199?0:i+1][j==0?199:j-1];
-			neighbors += cells_copy[i==0?199:i-1][j==199?0:j+1];
+			neighbors += cells_copy[i==99?0:i+1][j];
+			neighbors += cells_copy[i==0?99:i-1][j];
+			neighbors += cells_copy[i][j==99?0:j+1];
+			neighbors += cells_copy[i][j==0?99:j-1];
+			neighbors += cells_copy[i==99?0:i+1][j==99?0:j+1];
+			neighbors += cells_copy[i==0?99:i-1][j==0?99:j-1];
+			neighbors += cells_copy[i==99?0:i+1][j==0?99:j-1];
+			neighbors += cells_copy[i==0?99:i-1][j==99?0:j+1];
 
 			if ( cells_copy[i][j] ) {
 				if ( neighbors < 2 || neighbors > 3 ) { cells[i][j] = false; }
